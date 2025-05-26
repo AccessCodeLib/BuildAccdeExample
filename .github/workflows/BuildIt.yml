@@ -14,9 +14,9 @@ jobs:
         uses: actions/checkout@v4
       - name: "Build VBA-Enabled Documents"
         id: build_vba
-        uses: DecimalTurn/VBA-Build@v1.2.0
+        uses: AccessCodeLib/msaccess-vcs-build@v0.1.0
         with:
-          source-dir: "./src"
+          source-dir: "./source"
         timeout-minutes: 10
       - name: "Display Chocolatey logs in case of Office install failure"
         if: failure() && steps.build_vba.outcome == 'failure'
@@ -34,7 +34,7 @@ jobs:
         id: "upload"
         with:
           name: "VBA-Enabled-Documents"
-          path: "./src/out/*"
+          path: "./bin/*"
           if-no-files-found: warn
       - name: "Attestation"
         uses: actions/attest-build-provenance@v2
