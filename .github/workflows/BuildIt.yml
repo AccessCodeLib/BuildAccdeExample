@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }} 
       - name: "Build VBA-Enabled Documents"
         id: build_vba
         uses: AccessCodeLib/msaccess-vcs-build@main
