@@ -30,6 +30,9 @@ jobs:
             Write-Host "Chocolatey log file not found at C:\ProgramData\chocolatey\logs\chocolatey.log"
           }
         shell: pwsh
+      - name: "Open/close MS Access Application (first run)"
+        shell: pwsh
+        run: '${{ github.action_path }}\Open-Close-Office.ps1 "MSACCESS"'
       - name: "Build Access file (accdb/accde)"
         id: build_access_file
         uses: AccessCodeLib/msaccess-vcs-build@main
