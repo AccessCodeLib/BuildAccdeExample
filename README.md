@@ -1,6 +1,6 @@
 # BuildAccde
 
-Example usage of https://github.com/AccessCodeLib/msaccess-vcs-build
+Example usage of the [msaccess-vcs-build action](https://github.com/AccessCodeLib/msaccess-vcs-build)
 
 ## example workflows
 * Build-github-vm-install-office.yml
