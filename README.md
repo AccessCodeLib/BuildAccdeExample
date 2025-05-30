@@ -2,10 +2,14 @@
 
 Example usage of the [msaccess-vcs-build action](https://github.com/AccessCodeLib/msaccess-vcs-build)
 
-## Example workflows
-* Build-github-vm-install-office.yml
-  * use GitHub windows latest
-  * install Microsoft Office with Chocolatey => In my opinion, there may be issues with the Office license here!
-* Build-self-hosted*.yml
-  * Use self-hosted runner with installed Microsoft Office => you can use your legal Office license!
-  * As Office is already available pre-installed, the process is much faster
+## Example Workflows
+
+* **Build-github-vm-install-office.yml**
+  * Uses GitHub-hosted Windows (latest)
+  * Installs Microsoft Office via Chocolatey  
+    → *Note: In my opinion, there may be issues with the Office license here!*
+
+* **Build-self-hosted\*.yml**
+  * Uses a self-hosted runner with Microsoft Office already installed  
+    → *This allows you to use your valid Office license!*
+  * As Office is pre-installed, the process is significantly faster
