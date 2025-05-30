@@ -5,7 +5,7 @@ Example usage of the [msaccess-vcs-build action](https://github.com/AccessCodeLi
 ## Example Workflows
 
 * **Build-github-vm-install-office.yml**
-  * Uses GitHub-hosted Windows (latest)
+  * Uses GitHub hosted Windows VM
   * Installs Microsoft Office via Chocolatey  
     → *Note: In my opinion, there may be issues with the Office license here!*
 
