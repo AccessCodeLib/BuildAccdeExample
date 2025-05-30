@@ -19,6 +19,7 @@ jobs:
         uses: AccessCodeLib/msaccess-vcs-build@main
         with:
           source-dir: "./source"
+          target-dir: "bin"
           compile: true
           vcs-url: "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
         timeout-minutes: 10
