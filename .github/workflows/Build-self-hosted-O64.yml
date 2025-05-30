@@ -1,4 +1,4 @@
-name: Build-self-hosted
+name: Build-self-hosted-O64
 on:
   - workflow_dispatch
 
