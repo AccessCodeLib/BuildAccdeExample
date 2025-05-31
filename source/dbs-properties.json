@@ -60,6 +60,10 @@
       "Value": "",
       "Type": 12
     },
+    "Continuous Form Record Navigation Keys": {
+      "Value": 0,
+      "Type": 4
+    },
     "DesignMasterID": {
       "Value": "",
       "Type": 15
@@ -98,6 +102,10 @@
     },
     "Never Cache": {
       "Value": 0,
+      "Type": 4
+    },
+    "Option to enable Monaco SQL Editor": {
+      "Value": 1,
       "Type": 4
     },
     "Picture Property Storage Format": {
@@ -167,6 +175,14 @@
     "Updatable": {
       "Value": true,
       "Type": 1
+    },
+    "Use BigInt for linking and importing data": {
+      "Value": 0,
+      "Type": 4
+    },
+    "Use DateTime2 for linking and importing data": {
+      "Value": 0,
+      "Type": 4
     },
     "Use Microsoft Access 2007 compatible cache": {
       "Value": 0,
