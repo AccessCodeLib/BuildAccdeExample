@@ -7,8 +7,13 @@ pool:
   demands:
     - Agent.OS -equals Windows_NT
 
-variables:
-  ACCESS_TOKEN: $(ACCESS_TOKEN)
+resources:
+  repositories:
+    - repository: msaccessVcsBuild
+      type: github
+      name: AccessCodeLib/msaccess-vcs-build
+      ref: refs/heads/main
+      endpoint: AccessCodeLib
 
 steps:
   - checkout: self
@@ -26,7 +31,7 @@ steps:
         $compile = $false
         $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
 
-        $scriptPath = "C:/Daten/Projekte/CodeLib/msaccess-vcs-build/Build.ps1"
+        $scriptPath = "/msaccess-vcs-build/Build.ps1"
         & $scriptPath -SourceDir $sourceDir -TargetDir $targetDir -Compile $compile -vcsUrl $vcsUrl
     timeoutInMinutes: 10
 
