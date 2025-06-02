@@ -28,7 +28,7 @@ steps:
       pwsh: true
       script: |
         $sourceDir = "BuildAccdeExample\source"
-        $targetDir = "BuildAccdeExample\bin"
+        $targetDir = "bin"
         $compile = $false
         $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
 
