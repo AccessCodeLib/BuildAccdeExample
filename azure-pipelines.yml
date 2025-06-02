@@ -31,7 +31,8 @@ steps:
         $compile = $false
         $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
 
-        $scriptPath = "/msaccess-vcs-build/Build.ps1"
+        $scriptPath = "$(Pipeline.Workspace)/msaccessVcsBuild/Build.ps1"
+        Write-Host "Running script at $scriptPath"
         & $scriptPath -SourceDir $sourceDir -TargetDir $targetDir -Compile $compile -vcsUrl $vcsUrl
     timeoutInMinutes: 10
 
