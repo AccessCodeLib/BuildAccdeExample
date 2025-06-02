@@ -5,7 +5,7 @@ name: Build-self-hosted-O64
 pool:
   name: 'Self-hosted Runner'
   demands:
-    - Agent.OS -equals Windows
+    - Agent.OS -equals Windows_NT
 
 variables:
   ACCESS_TOKEN: $(ACCESS_TOKEN)
