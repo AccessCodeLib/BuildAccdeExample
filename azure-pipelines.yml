@@ -18,6 +18,8 @@ resources:
 steps:
   - checkout: self
     persistCredentials: true
+    
+  - checkout: msaccessVcsBuild
 
   - task: PowerShell@2
     displayName: 'Build Access file (accdb/accde)'
