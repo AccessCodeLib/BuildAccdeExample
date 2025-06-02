@@ -28,7 +28,7 @@ steps:
       pwsh: true
       script: |
         # Starte das PowerShell-Skript direkt wie es in der Composite-Action gemacht wird
-        $sourceDir = "source"
+        $sourceDir = "BuildAccdeExample\source"
         $targetDir = ""
         $compile = $false
         $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
