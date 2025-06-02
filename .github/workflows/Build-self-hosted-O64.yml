@@ -18,6 +18,8 @@ jobs:
         with:
           source-dir: "source"
           target-dir: "bin"
+          compile: "true"
+          app-config: "deployment/Application.Config.json"
         timeout-minutes: 10
       - name: "Upload Build Artifact"
         uses: actions/upload-artifact@v4
