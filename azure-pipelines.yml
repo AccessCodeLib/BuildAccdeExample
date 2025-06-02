@@ -27,16 +27,20 @@ steps:
       targetType: inline
       pwsh: true
       script: |
-        # Starte das PowerShell-Skript direkt wie es in der Composite-Action gemacht wird
         $sourceDir = "BuildAccdeExample\source"
         $targetDir = "BuildAccdeExample\bin"
         $compile = $false
         $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
 
-        $scriptPath = Join-Path -Path "$(Build.SourcesDirectory)" -ChildPath "msaccess-vcs-build/Build.ps1"
+        $scriptPath = "$(Build.SourcesDirectory)\msaccessVcsBuild\Build.ps1"
         Write-Host "Running script at $scriptPath"
+
+        if (-Not (Test-Path $scriptPath)) {
+          Write-Error "Build.ps1 not found at $scriptPath"
+          exit 1
+        }
+
         & $scriptPath -SourceDir $sourceDir -TargetDir $targetDir -Compile $compile -vcsUrl $vcsUrl
-    timeoutInMinutes: 10
 
   - task: PublishBuildArtifacts@1
     displayName: 'Upload Build Artifact'
