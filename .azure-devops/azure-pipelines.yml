@@ -29,8 +29,8 @@ steps:
       script: |
         $sourceDir = "BuildAccdeExample\source"
         $targetDir = "bin"
-        $compile: "true"
-        $app-config: "BuildAccdeExample/deployment/Application-Config.json"
+        $compile = "true"
+        $app-config = "BuildAccdeExample/deployment/Application-Config.json"
         $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
 
         $scriptPath = "$(Build.SourcesDirectory)\msaccess-vcs-build\Build.ps1"
