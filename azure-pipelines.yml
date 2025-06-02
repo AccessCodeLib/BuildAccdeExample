@@ -29,7 +29,7 @@ steps:
       script: |
         # Starte das PowerShell-Skript direkt wie es in der Composite-Action gemacht wird
         $sourceDir = "BuildAccdeExample\source"
-        $targetDir = ""
+        $targetDir = "BuildAccdeExample\bin"
         $compile = $false
         $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
 
