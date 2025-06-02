@@ -33,8 +33,7 @@ steps:
         $compile = $false
         $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
 
-        $buildRepoPath = Join-Path -Path "$(Build.SourcesDirectory)\.." -ChildPath "msaccess-vcs-build"
-        $scriptPath = Join-Path -Path $buildRepoPath -ChildPath "Build.ps1"
+        $scriptPath = Join-Path -Path "$(Agent.WorkFolder)" -ChildPath "2/msaccessVcsBuild/Build.ps1"
         Write-Host "Running script at $scriptPath"
         & $scriptPath -SourceDir $sourceDir -TargetDir $targetDir -Compile $compile -vcsUrl $vcsUrl
     timeoutInMinutes: 10
