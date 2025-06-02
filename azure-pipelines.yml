@@ -9,7 +9,7 @@ pool:
 
 resources:
   repositories:
-    - repository: msaccessVcsBuild
+    - repository: msaccess-vcs-build
       type: github
       name: AccessCodeLib/msaccess-vcs-build
       ref: refs/heads/main
@@ -19,7 +19,7 @@ steps:
   - checkout: self
     persistCredentials: true
     
-  - checkout: msaccessVcsBuild
+  - checkout: msaccess-vcs-build
 
   - task: PowerShell@2
     displayName: 'Build Access file (accdb/accde)'
@@ -32,7 +32,7 @@ steps:
         $compile = $false
         $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
 
-        $scriptPath = "$(Build.SourcesDirectory)\msaccessVcsBuild\Build.ps1"
+        $scriptPath = "$(Build.SourcesDirectory)\msaccess-vcs-build\Build.ps1"
         Write-Host "Running script at $scriptPath"
 
         if (-Not (Test-Path $scriptPath)) {
