@@ -3,7 +3,7 @@ trigger: none  # Entspricht 'workflow_dispatch'
 name: Build-self-hosted-O64
 
 pool:
-  name: Self-hosted Runner
+  name: 'Self-hosted Runner'
   demands:
     - Agent.OS -equals Windows
 
