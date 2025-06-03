@@ -27,6 +27,7 @@ jobs:
       displayName: 'Build 32-bit'
       inputs:
         targetType: inline
+        pwsh: false
         script: |
           $sourceDir = "BuildAccdeExample\source"
           $targetDir = "bin32"
