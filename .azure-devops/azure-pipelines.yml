@@ -23,19 +23,11 @@ jobs:
 
     - checkout: msaccess-vcs-build
 
-    - task: PowerShell@2
-      displayName: 'Build 32-bit'
+    - task: CmdLine@2
+      displayName: 'Build 32-bit (32-bit PowerShell)'
       inputs:
-        targetType: inline
-        pwsh: false
         script: |
-          $sourceDir = "BuildAccdeExample\source"
-          $targetDir = "bin32"
-          $compile = "true"
-          $appConfig = "BuildAccdeExample/deployment/Application-Config.json"
-          $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
-
-          & "$(Build.SourcesDirectory)\msaccess-vcs-build\Build.ps1" -SourceDir $sourceDir -TargetDir $targetDir -Compile $compile -AppConfigFile "$appConfig" -vcsUrl $vcsUrl
+          "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File "$(Build.SourcesDirectory)\msaccess-vcs-build\Build.ps1" -SourceDir "BuildAccdeExample\source" -TargetDir "bin32" -Compile "true" -AppConfigFile "BuildAccdeExample/deployment/Application-Config.json" -vcsUrl "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
 
     - task: PublishBuildArtifacts@1
       displayName: 'Publish 32-bit ACCDE'
