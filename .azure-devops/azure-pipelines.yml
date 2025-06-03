@@ -1,11 +1,6 @@
-trigger: none  # Entspricht 'workflow_dispatch'
+trigger: none
 
-name: Build-self-hosted-O64
-
-pool:
-  name: 'Self-hosted Runner'
-  demands:
-    - Agent.OS -equals Windows_NT
+name: Build-self-hosted-MultiBit
 
 resources:
   repositories:
@@ -15,37 +10,69 @@ resources:
       ref: refs/heads/main
       endpoint: AccessCodeLib
 
-steps:
-  - checkout: self
-    persistCredentials: true
-    
-  - checkout: msaccess-vcs-build
+jobs:
+- job: Build32bit
+  displayName: 'Build 32-bit ACCDE'
+  pool:
+    name: 'Self-hosted Runner'
+    demands:
+      - Office-Bitness -equals 32
+  steps:
+    - checkout: self
+      persistCredentials: true
 
-  - task: PowerShell@2
-    displayName: 'Build Access file (accdb/accde)'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        $sourceDir = "BuildAccdeExample\source"
-        $targetDir = "bin"
-        $compile = "true"
-        $appConfig = "BuildAccdeExample/deployment/Application-Config.json"
-        $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
+    - checkout: msaccess-vcs-build
 
-        $scriptPath = "$(Build.SourcesDirectory)\msaccess-vcs-build\Build.ps1"
-        Write-Host "Running script at $scriptPath"
+    - task: PowerShell@2
+      displayName: 'Build 32-bit'
+      inputs:
+        targetType: inline
+        pwsh: true
+        script: |
+          $sourceDir = "BuildAccdeExample\source"
+          $targetDir = "bin32"
+          $compile = "true"
+          $appConfig = "BuildAccdeExample/deployment/Application-Config.json"
+          $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
 
-        if (-Not (Test-Path $scriptPath)) {
-          Write-Error "Build.ps1 not found at $scriptPath"
-          exit 1
-        }
+          & "$(Build.SourcesDirectory)\msaccess-vcs-build\Build.ps1" -SourceDir $sourceDir -TargetDir $targetDir -Compile $compile -AppConfigFile "$appConfig" -vcsUrl $vcsUrl
 
-        & $scriptPath -SourceDir $sourceDir -TargetDir $targetDir -Compile $compile -AppConfigFile "$appConfig" -vcsUrl $vcsUrl
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish 32-bit ACCDE'
+      inputs:
+        PathtoPublish: 'bin32'
+        ArtifactName: 'ACCDE 32-bit'
+        publishLocation: 'Container'
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Upload Build Artifact'
-    inputs:
-      PathtoPublish: 'bin'
-      ArtifactName: 'Binary files'
-      publishLocation: 'Container'
+- job: Build64bit
+  displayName: 'Build 64-bit ACCDE'
+  pool:
+    name: 'Self-hosted Runner'
+    demands:
+      - Office-Bitness -equals 64
+  steps:
+    - checkout: self
+      persistCredentials: true
+
+    - checkout: msaccess-vcs-build
+
+    - task: PowerShell@2
+      displayName: 'Build 64-bit'
+      inputs:
+        targetType: inline
+        pwsh: true
+        script: |
+          $sourceDir = "BuildAccdeExample\source"
+          $targetDir = "bin64"
+          $compile = "true"
+          $appConfig = "BuildAccdeExample/deployment/Application-Config.json"
+          $vcsUrl = "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
+
+          & "$(Build.SourcesDirectory)\msaccess-vcs-build\Build.ps1" -SourceDir $sourceDir -TargetDir $targetDir -Compile $compile -AppConfigFile "$appConfig" -vcsUrl $vcsUrl
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish 64-bit ACCDE'
+      inputs:
+        PathtoPublish: 'bin64'
+        ArtifactName: 'ACCDE 64-bit'
+        publishLocation: 'Container'
