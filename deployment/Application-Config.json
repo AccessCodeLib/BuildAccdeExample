@@ -9,6 +9,11 @@
         }
     ],
     "DatabaseProperties": [
+		{
+            "Name": "AppTitle",
+            "Type": 10,
+            "Value": "Test App for Build Workflow"
+        },
         {
             "Name": "AllowBypassKey",
             "Type": 1,
@@ -28,6 +33,16 @@
             "Name": "StartUpForm",
             "Type": 10,
             "Value": "frmStart"
+        },
+        {
+            "Name": "CustomRibbonID",
+            "Type": 10,
+            "Value": "MainRibbon"
+        },
+        {
+            "Name": "ShowDocumentTabs",
+            "Type": 1,
+            "Value": false
         }
     ]
 }

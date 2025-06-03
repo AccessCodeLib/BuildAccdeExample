@@ -1,17 +1,20 @@
 ﻿Version =20
 VersionRequired =20
 Begin Form
+    RecordSelectors = NotDefault
+    NavigationButtons = NotDefault
     DividingLines = NotDefault
     AllowDesignChanges = NotDefault
     DefaultView =0
+    ScrollBars =0
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =6994
+    Width =6803
     DatasheetFontHeight =11
-    ItemSuffix =2
-    Right =22843
-    Bottom =11091
+    ItemSuffix =3
+    Right =24915
+    Bottom =11730
     RecSrcDt = Begin
         0xfd5e93f4705de640
     End
@@ -71,40 +74,57 @@ Begin Form
             PressedForeTint =75.0
         End
         Begin Section
-            Height =5952
+            Height =5669
             Name ="Detail"
-            AutoHeight =1
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
             BackThemeColorIndex =1
             Begin
                 Begin Label
                     OverlapFlags =85
-                    Left =1474
-                    Top =1133
-                    Width =720
-                    Height =315
+                    Left =566
+                    Top =566
+                    Width =2205
+                    Height =675
+                    FontSize =26
                     Name ="Label0"
-                    Caption ="Test"
-                    LayoutCachedLeft =1474
-                    LayoutCachedTop =1133
-                    LayoutCachedWidth =2194
-                    LayoutCachedHeight =1448
+                    Caption ="Test Form"
+                    LayoutCachedLeft =566
+                    LayoutCachedTop =566
+                    LayoutCachedWidth =2771
+                    LayoutCachedHeight =1241
                 End
                 Begin CommandButton
                     OverlapFlags =85
-                    Left =3344
-                    Top =453
-                    Width =1842
-                    Height =351
+                    Left =566
+                    Top =1700
+                    Width =2247
+                    Height =561
                     Name ="cmdDevMode"
-                    Caption ="Aktivate Dev Mode"
+                    Caption ="Activate Dev Mode"
                     OnClick ="[Event Procedure]"
 
-                    LayoutCachedLeft =3344
-                    LayoutCachedTop =453
-                    LayoutCachedWidth =5186
-                    LayoutCachedHeight =804
+                    LayoutCachedLeft =566
+                    LayoutCachedTop =1700
+                    LayoutCachedWidth =2813
+                    LayoutCachedHeight =2261
+                End
+                Begin Label
+                    Visible = NotDefault
+                    OverlapFlags =85
+                    Left =2948
+                    Top =1700
+                    Width =3105
+                    Height =525
+                    FontSize =10
+                    ForeColor =0
+                    Name ="labDevMode"
+                    Caption ="You must close and reopen \015\012the current database  to take effect"
+                    LayoutCachedLeft =2948
+                    LayoutCachedTop =1700
+                    LayoutCachedWidth =6053
+                    LayoutCachedHeight =2225
+                    ForeTint =100.0
                 End
             End
         End

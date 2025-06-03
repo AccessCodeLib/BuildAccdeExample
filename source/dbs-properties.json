@@ -168,6 +168,10 @@
       "Value": 1,
       "Type": 4
     },
+    "Track Name AutoCorrect Info": {
+      "Value": 0,
+      "Type": 4
+    },
     "Transactions": {
       "Value": true,
       "Type": 1
