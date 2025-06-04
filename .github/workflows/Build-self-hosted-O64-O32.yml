@@ -41,7 +41,7 @@ jobs:
         uses: actions/checkout@v4
       - name: "Build Access file (accdb/accde)"
         id: build_access_file
-        uses: AccessCodeLib/msaccess-vcs-build@main
+        uses: AccessCodeLib/msaccess-vcs-build/x86@main
         with:
           source-dir: "source"
           target-dir: "bin32"
