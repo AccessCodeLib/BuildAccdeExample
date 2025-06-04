@@ -46,7 +46,7 @@
         "Format": "Tab Delimited"
       },
       "USysRibbons": {
-        "Format": "Tab Delimited"
+        "Format": "XML Format"
       }
     },
     "SchemaExports": {
