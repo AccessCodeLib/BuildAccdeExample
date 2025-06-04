@@ -17,7 +17,10 @@ jobs:
           - arch: O32
             binfolder: bin32
             label: "32 bit"
-    runs-on: self-hosted, Windows, ${{ matrix.arch }}
+    runs-on:
+      - self-hosted
+      - Windows
+      - ${{ matrix.arch }}
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
