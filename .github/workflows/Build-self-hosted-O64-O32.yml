@@ -1,0 +1,63 @@
+name: Build-self-hosted-O64-O32
+on:
+  - workflow_dispatch
+
+permissions:
+  id-token: write
+  attestations: write
+
+jobs:
+  build-o64:
+    runs-on: [self-hosted, Windows, O64]
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+      - name: "Build Access file (accdb/accde)"
+        id: build_access_file
+        uses: AccessCodeLib/msaccess-vcs-build@main
+        with:
+          source-dir: "source"
+          target-dir: "bin64"
+          compile: "true"
+          app-config: "deployment/Application-Config.json"
+        timeout-minutes: 10
+      - name: "Upload Build Artifact"
+        uses: actions/upload-artifact@v4
+        id: "upload"
+        with:
+          name: "Binary files (64 bit)"
+          path: "./bin64/*"
+          if-no-files-found: warn
+      - name: "Attestation"
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: "Binary files (64 bit)"
+          subject-digest: sha256:${{ steps.upload.outputs.artifact-digest }}
+
+  build-o32:
+    runs-on: [self-hosted, Windows, O32]
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+      - name: "Build Access file (accdb/accde)"
+        id: build_access_file
+        uses: AccessCodeLib/msaccess-vcs-build@main
+        with:
+          source-dir: "source"
+          target-dir: "bin32"
+          compile: "true"
+          app-config: "deployment/Application-Config.json"
+        timeout-minutes: 10
+      - name: "Upload Build Artifact"
+        uses: actions/upload-artifact@v4
+        id: "upload"
+        with:
+          name: "Binary files (32 bit)"
+          path: "./bin32/*"
+          if-no-files-found: warn
+      - name: "Attestation"
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: "Binary files (32 bit)"
+          subject-digest: sha256:${{ steps.upload.outputs.artifact-digest }}
+
