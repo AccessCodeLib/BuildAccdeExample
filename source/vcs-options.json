@@ -51,7 +51,7 @@
     },
     "SchemaExports": {
     },
-    "RunBeforeExport": "",
+    "RunBeforeExport": "%addins%\\ACLibDeclarationDict.RunVcsCheckDialog : %addins%\\AccUnitLoader.AutomatedTestRunVCS",
     "RunAfterExport": "",
     "RunBeforeBuild": "",
     "RunAfterBuild": "",

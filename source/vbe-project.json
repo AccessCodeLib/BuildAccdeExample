@@ -4,7 +4,7 @@
     "Description": "VBE Project"
   },
   "Items": {
-    "Name": "Database",
+    "Name": "TestApp",
     "Description": "",
     "FileName": "Test.accdb",
     "HelpFile": "",
