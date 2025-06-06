@@ -32,6 +32,7 @@ jobs:
           target-dir: "${{ matrix.binfolder }}"
           compile: "true"
           app-config: "deployment/Application-Config.json"
+          run-accunit-tests: "true"
         timeout-minutes: 10
       - name: "Upload Build Artifact"
         uses: actions/upload-artifact@v4
