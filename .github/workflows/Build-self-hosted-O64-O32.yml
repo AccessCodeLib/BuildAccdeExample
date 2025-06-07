@@ -1,6 +1,19 @@
 name: Build-self-hosted-O64-O32
 on:
-  - workflow_dispatch
+  push:
+    branches:
+      - main
+      - feature/**
+      - bugfix/**
+    paths:
+      - 'source/**'
+      - '.github/workflows/**'
+  pull_request:
+    branches:
+      - main
+  release:
+    types: [published]
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -46,4 +59,3 @@ jobs:
         with:
           subject-name: "Binary files (${{ matrix.label }})"
           subject-digest: sha256:${{ steps.upload.outputs.artifact-digest }}
-
