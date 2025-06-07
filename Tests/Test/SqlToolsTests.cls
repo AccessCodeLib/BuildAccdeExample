@@ -47,7 +47,7 @@ End Sub
 'AccUnit:Row("abcdefg", "'", False, "'abcdefg'")
 'AccUnit:Row("abcdefg", "'", True, "abcdefg")
 'AccUnit:Row("abc'defg", "'", False, "'abc''defg'")
-'AccUnit:Row("abc""defg", "'", False, "'abc""defgXX'")
+'AccUnit:Row("abc""defg", "'", False, "'abc""defg'")
 'AccUnit:Row(Null, "'", False, "Null")
 Public Function TextToSqlText_DefaultValueIfNullArg_ReturnsSqlText( _
                      ByVal Value As Variant, _
