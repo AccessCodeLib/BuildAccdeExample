@@ -19,7 +19,7 @@ jobs:
           source-dir: "./source"
           target-dir: "bin"
           compile: true
-          vcs-url: "https://github.com/joyfullservice/msaccess-vcs-addin/releases/tag/v5.0.1"
+          vcs-url: "https://api.github.com/repos/joyfullservice/msaccess-vcs-addin/releases/latest"
         timeout-minutes: 10
       - name: "Upload Build Artifact"
         uses: actions/upload-artifact@v4
