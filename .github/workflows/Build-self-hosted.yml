@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: [self-hosted, Windows, X64]
+    runs-on: [self-hosted, Windows, Office]
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
@@ -21,7 +21,7 @@ jobs:
           source-dir: "./source"
           target-dir: "bin"
           compile: true
-          vcs-url: "https://api.github.com/repos/josef-poetzl/msaccess-vcs-addin/releases/latest"
+          vcs-url: "https://github.com/joyfullservice/msaccess-vcs-addin/releases/tag/v5.0.1"
         timeout-minutes: 10
       - name: "Upload Build Artifact"
         uses: actions/upload-artifact@v4
